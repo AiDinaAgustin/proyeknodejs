@@ -6,7 +6,7 @@ const db = require('../models/db');
 router.get('/', (req, res) => {
     db.query('SELECT * FROM mahasiswa', (error, results) => {
         if (error) {
-            console.error('Error fetching mahaasiswa:', error);
+            console.error('Error fetching mahasiswa:', error);
             res.status(500).json({ message: 'Internal Server Error' });
         } else {
             res.json(results);
@@ -44,15 +44,28 @@ router.put('/:nim', (req, res) => {
 });
 
 
-//DELETE /mahasiswa/:nim
+// DELETE /mahasiswa/:nim
 router.delete('/:nim', (req, res) => {
     const mahasiswaNim = req.params.nim;
     db.query('DELETE FROM mahasiswa WHERE nim = ?', [mahasiswaNim], (error) => {
         if (error) {
-            console.error('Error deleting mahaasiswa:', error);
+            console.error('Error deleting mahasiswa:', error);
             res.status(500).json({ message: 'Internal Server Error' });
         } else {
             res.json({ message: 'Mahasiswa deleted successfully' });
+        }
+    });
+});
+
+// POST /mahasiswa
+router.post('/', (req, res) => {
+    const { nim, nama, gender, prodi, alamat } = req.body;
+    db.query('INSERT INTO mahasiswa (nim, nama, gender, prodi, alamat) VALUES (?, ?, ?, ?, ?)', [nim, nama, gender, prodi, alamat], (error) => {
+        if (error) {
+            console.error('Error creating mahasiswa:', error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        } else {
+            res.json({ message: 'Mahasiswa created successfully' });
         }
     });
 });
