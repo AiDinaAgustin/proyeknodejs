@@ -1,9 +1,9 @@
 const postData = {
-    nim: '2021004',
-    nama: 'John Doe',
+    nim: '20210082',
+    nama: 'Angga',
     gender: 'L',
     prodi: 'TI',
-    alamat: 'Jl. Jendral Sudirman No. 1'
+    alamat: 'Jampang'
 };
 
 fetch('http://localhost:3000/mahasiswa', {

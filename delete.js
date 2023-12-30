@@ -1,4 +1,4 @@
-const mahasiswaNim = '2021004000';
+const mahasiswaNim = '2021004999';
 
 fetch(`http://localhost:3000/mahasiswa/${mahasiswaNim}`, {
     method: 'DELETE',
